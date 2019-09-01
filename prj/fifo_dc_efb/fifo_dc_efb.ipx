@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiamondModule name="fifo_dc_efb" module="FIFO_DC" VendorName="Lattice Semiconductor Corporation" generator="IPexpress" date="2019 08 25 10:58:04.650" version="5.8" type="Module" synthesis="synplify" source_format="Verilog">
+  <Package>
+		<File name="fifo_dc_efb.lpc" type="lpc" modified="2019 08 25 10:58:03.001"/>
+		<File name="fifo_dc_efb.v" type="top_level_verilog" modified="2019 08 25 10:58:03.162"/>
+		<File name="fifo_dc_efb_tmpl.v" type="template_verilog" modified="2019 08 25 10:58:03.168"/>
+		<File name="tb_fifo_dc_efb_tmpl.v" type="testbench_verilog" modified="2019 08 25 10:58:03.202"/>
+  </Package>
+</DiamondModule>

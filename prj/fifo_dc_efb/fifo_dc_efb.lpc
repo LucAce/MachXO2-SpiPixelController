@@ -1,0 +1,53 @@
+[Device]
+Family=machxo2
+PartType=LCMXO2-1200HC
+PartName=LCMXO2-1200HC-4SG32C
+SpeedGrade=4
+Package=QFN32
+OperatingCondition=COM
+Status=S
+
+[IP]
+VendorName=Lattice Semiconductor Corporation
+CoreType=LPM
+CoreStatus=Demo
+CoreName=FIFO_DC
+CoreRevision=5.8
+ModuleName=fifo_dc_efb
+SourceFormat=Verilog HDL
+ParameterFileVersion=1.0
+Date=08/25/2019
+Time=10:58:02
+
+[Parameters]
+Verilog=1
+VHDL=0
+EDIF=1
+Destination=Synplicity
+Expression=BusA(0 to 7)
+Order=Big Endian [MSB:LSB]
+IO=0
+FIFOImp=EBR Only
+RDepth=1024
+RWidth=34
+WDepth=1024
+WWidth=34
+regout=0
+CtrlByRdEn=0
+ClockEn=0
+EmpFlg=1
+PeMode=Dynamic - Single Threshold
+PeAssert=10
+PeDeassert=12
+FullFlg=1
+PfMode=Dynamic - Single Threshold
+PfAssert=508
+PfDeassert=506
+Reset=Async
+Reset1=Sync
+RDataCount=0
+WDataCount=0
+EnECC=0
+
+[Command]
+cmd_line= -w -n fifo_dc_efb -lang verilog -synth lse -bus_exp 7 -bb -arch xo2c00 -type ebfifo -depth 1024 -width 34 -rwidth 34 -no_enable -pe 0 -pf 0

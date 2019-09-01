@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HdlAlias>
+	<Aliases>
+		<Alias name="ctrl_state">
+			<Mapping value="00" mnemonic="S_INIT"/>
+			<Mapping value="01" mnemonic="S_SPICR1"/>
+			<Mapping value="02" mnemonic="S_SPICR2"/>
+			<Mapping value="03" mnemonic="S_WAIT_FOR_TIPN"/>
+			<Mapping value="04" mnemonic="S_RXDR_DISCARD1"/>
+			<Mapping value="05" mnemonic="S_RXDR_DISCARD2"/>
+			<Mapping value="06" mnemonic="S_T1_TXDR"/>
+			<Mapping value="07" mnemonic="S_WAIT_FOR_TIP"/>
+			<Mapping value="08" mnemonic="S_T2_TRDY"/>
+			<Mapping value="09" mnemonic="S_T2_TXDR"/>
+			<Mapping value="0A" mnemonic="S_R1_RRDY"/>
+			<Mapping value="0B" mnemonic="S_R1_RXDR"/>
+			<Mapping value="0C" mnemonic="S_T3_TRDY"/>
+			<Mapping value="0D" mnemonic="S_T3_TXDR"/>
+			<Mapping value="0E" mnemonic="S_RN_RRDY"/>
+			<Mapping value="0F" mnemonic="S_RN_RXDR"/>
+			<Mapping value="10" mnemonic="S_RN_PROCESS"/>
+			<Mapping value="11" mnemonic="S_TN_TRDY"/>
+			<Mapping value="12" mnemonic="S_TN_TXDR"/>
+		</Alias>
+		<Alias name="frsm_state">
+			<Mapping value="1" mnemonic="S_FR_IDLE"/>
+			<Mapping value="2" mnemonic="S_FR_READ"/>
+			<Mapping value="4" mnemonic="S_FR_REORDER"/>
+			<Mapping value="8" mnemonic="S_FR_VALID"/>
+		</Alias>
+		<Alias name="sosm_state">
+			<Mapping value="1" mnemonic="S_SO_IDLE"/>
+			<Mapping value="2" mnemonic="S_SO_HIGH_PHASE"/>
+			<Mapping value="4" mnemonic="S_SO_LOW_PHASE"/>
+			<Mapping value="8" mnemonic="S_SO_RESET"/>
+		</Alias>
+		<Alias name="spi_cmd">
+			<Mapping value="F0" mnemonic="PROTOCOL"/>
+			<Mapping value="F1" mnemonic="REVISION"/>
+			<Mapping value="00" mnemonic="REG_READ"/>
+			<Mapping value="01" mnemonic="REG_WRITE"/>
+			<Mapping value="04" mnemonic="LOAD_RGB"/>
+			<Mapping value="05" mnemonic="LOAD_WRGB"/>
+			<Mapping value="06" mnemonic="LOAD_RESET_CYCLE"/>
+			<Mapping value="07" mnemonic="LOAD_RESET_CODE"/>
+		</Alias>
+		<Alias name="wb_addr">
+			<Mapping value="54" mnemonic="SPICR0"/>
+			<Mapping value="55" mnemonic="SPICR1"/>
+			<Mapping value="56" mnemonic="SPICR2"/>
+			<Mapping value="57" mnemonic="SPIBR"/>
+			<Mapping value="58" mnemonic="SPICSR"/>
+			<Mapping value="59" mnemonic="SPITXDR"/>
+			<Mapping value="5A" mnemonic="SPISR"/>
+			<Mapping value="5B" mnemonic="SPIRXDR"/>
+			<Mapping value="5C" mnemonic="SPIIRQ"/>
+			<Mapping value="5D" mnemonic="SPIIRQEN"/>
+		</Alias>
+	</Aliases>
+</HdlAlias>
