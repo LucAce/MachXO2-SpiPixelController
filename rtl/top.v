@@ -67,7 +67,7 @@ module top (
     // Parameter Definitions
     //*************************************************************************
     parameter       PROTOCOL = 8'h01;       // Protocol Version
-    parameter       REVISION = 8'h00;       // Device Revision
+    parameter       REVISION = 8'h02;       // Device Revision
 
 
     //*************************************************************************
@@ -90,7 +90,6 @@ module top (
     wire            wbm_ack_i;
 
     // EFB FIFO
-    wire            fifo_reset;
     wire            fifo_re;
     wire [33:0]     fifo_rdata;
     wire            fifo_we;

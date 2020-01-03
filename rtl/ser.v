@@ -38,7 +38,7 @@
 //     [32]:   Reset Code (Full Reset)
 //     [31:24] White
 //     [23:16] Red
-//     [14: 8] Green
+//     [15: 8] Green
 //     [ 7: 0] Blue
 //
 //*****************************************************************************
@@ -250,6 +250,7 @@ module ser (
                         2'b11: fbuf[ 7: 0] <= fbuf[ 7: 0];  // Blue
                     endcase
 
+                    fbuf_valid <= 1'b1;
                     frsm_state <= `S_FR_VALID;
                 end
 

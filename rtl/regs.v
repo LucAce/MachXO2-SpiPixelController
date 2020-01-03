@@ -95,7 +95,7 @@ module regs (
     reg             overflow_reg;
     reg             underflow_reg;
 
-    // Configuration  Register Fields
+    // Configuration Register Fields
     reg             mode_reg;
     reg             enable_reg;
 
