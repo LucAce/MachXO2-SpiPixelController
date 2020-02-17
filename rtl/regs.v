@@ -208,23 +208,23 @@ module regs (
             // Reg 0x05, 0x06 (~10%)
             aempty_thresh_reg       <= 10'h067;
 
-            // Reg 0x07 (14)
-            zero_high_timing_reg    <= 8'h10;
+            // Reg 0x07 (18)
+            zero_high_timing_reg    <= 8'h12;
 
-            // Reg 0x08 (31)
-            zero_low_timing_reg     <= 8'h24;
+            // Reg 0x08 (38)
+            zero_low_timing_reg     <= 8'h26;
 
-            // Reg 0x09 (27)
-            one_high_timing_reg     <= 8'h20;
+            // Reg 0x09 (38)
+            one_high_timing_reg     <= 8'h26;
 
-            // Reg 0x0A (23)
-            one_low_timing_reg      <= 8'h1B;
+            // Reg 0x0A (18)
+            one_low_timing_reg      <= 8'h12;
 
-            // Reg 0x0B (45)
-            reset_cycle_timing_reg  <= 8'h34;
+            // Reg 0x0B (56)
+            reset_cycle_timing_reg  <= 8'h38;
 
-            // Reg 0x0C (49)
-            reset_code_timing_reg   <= 8'h31;
+            // Reg 0x0C (9)
+            reset_code_timing_reg   <= 8'h09;
 
             // Reg 0x0D
             run_reg                 <= 1'b1;
