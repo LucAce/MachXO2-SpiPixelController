@@ -32,13 +32,12 @@ add wave -noreg -logic {/tb_top/dut/ser_inst/fbuf_ready}
 add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/frsm_counter}
 add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/bindex}
 add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/timing_count}
-add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/reset_count}
-add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/zero_high_timing_i}
-add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/zero_low_timing_i}
-add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/one_high_timing_i}
-add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/one_low_timing_i}
-add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/reset_cycle_timing_i}
-add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/reset_code_timing_i}
+add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/zero_high_timing}
+add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/zero_low_timing}
+add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/one_high_timing}
+add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/one_low_timing}
+add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/reset_cycle_timing}
+add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/reset_code_timing}
 add wave -noreg -logic {/tb_top/dut/ser_inst/eof_empty}
 add wave -noreg -logic {/tb_top/dut/ser_inst/eof_decr}
 add wave -noreg -hexadecimal -literal {/tb_top/dut/ser_inst/eof_count}

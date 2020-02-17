@@ -1,6 +1,6 @@
 //*****************************************************************************
 //
-// Copyright (c) 2019 LucAce
+// Copyright (c) 2019-2020 LucAce
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the "Software"),
@@ -36,6 +36,8 @@
     //*************************************************************************
     // Parameter Definitions
     //*************************************************************************
+    parameter FPGA_REVISION   = 8'h03;                  // Expected Revision
+
     parameter SPI_HALF_PERIOD = 25;                     // 20Mhz
     parameter SPI_DELAY       = 32*SPI_HALF_PERIOD;     // 8 SPI Clocks
     parameter SPI_CSN_DELAY   = 5;
@@ -67,7 +69,7 @@
 
     reg  [7:0]  bytetx [0:31];
     reg  [7:0]  byterx [0:31];
-	reg	 [7:0]  bytecount;
+    reg  [7:0]  bytecount;
     reg  [7:0]  i;
 
     //*************************************************************************
@@ -116,14 +118,14 @@
         end
 
         for (i=0; i<bytecount; i=i+1) begin
-		    for (j=0; j<8; j=j+1) begin
-	            sclk = 1'b0;
-	            mosi = bytetx[i][7-j];
-	            #SPI_HALF_PERIOD;
-	            byterx[i][7-j] = miso;
-	            sclk = 1'b1;
-	            #SPI_HALF_PERIOD;
-			end
+            for (j=0; j<8; j=j+1) begin
+                sclk = 1'b0;
+                mosi = bytetx[i][7-j];
+                #SPI_HALF_PERIOD;
+                byterx[i][7-j] = miso;
+                sclk = 1'b1;
+                #SPI_HALF_PERIOD;
+            end
         end
 
         sclk = 1'b0;
@@ -148,7 +150,7 @@
         end
 
         bytetx[0] = `SPI_CMD_PROTOCOL;
-		bytecount = 3;
+        bytecount = 3;
 
         spi_cmd();
         if (byterx[2] == 8'h01)
@@ -169,10 +171,10 @@
         end
 
         bytetx[0] = `SPI_CMD_REVISION;
-		bytecount = 3;
+        bytecount = 3;
 
         spi_cmd();
-        if (byterx[2] == 8'h00)
+        if (byterx[2] == FPGA_REVISION)
             $display("Reported Revision: 0x%02h", byterx[2]);
         else
             $display("Error: Reported Revision: 0x%02h", byterx[2]);
@@ -191,7 +193,7 @@
 
         bytetx[0] = `SPI_CMD_REG_READ;
         bytetx[1] = addr;
-		bytecount = 4;
+        bytecount = 4;
 
         spi_cmd();
         $display("Register Read 0x%02h: 0x%02h", bytetx[1], byterx[3]);
@@ -211,7 +213,7 @@
 
         bytetx[0] = `SPI_CMD_REG_READ;
         bytetx[1] = addr;
-		bytecount = 4;
+        bytecount = 4;
 
         spi_cmd();
 
@@ -244,7 +246,7 @@
         bytetx[0] = `SPI_CMD_REG_WRITE;
         bytetx[1] = addr;
         bytetx[2] = data;
-		bytecount = 3;
+        bytecount = 3;
 
         spi_cmd();
         $display("Register Write 0x%02h: 0x%02h", bytetx[1], bytetx[2]);
@@ -267,7 +269,7 @@
         bytetx[1] = b1;
         bytetx[2] = b2;
         bytetx[3] = b3;
-		bytecount = 4;
+        bytecount = 4;
 
         spi_cmd();
         $display("Load RGB: 0x%02h 0x%02h 0x%02h", bytetx[1], bytetx[2], bytetx[3]);
@@ -292,7 +294,7 @@
         bytetx[2] = b2;
         bytetx[3] = b3;
         bytetx[4] = b4;
-		bytecount = 5;
+        bytecount = 5;
 
         spi_cmd();
         $display("Load WRGB: 0x%02h 0x%02h 0x%02h 0x%02h", bytetx[1], bytetx[2], bytetx[3], bytetx[4]);
@@ -310,7 +312,7 @@
 
         bytetx[0] = `SPI_CMD_LOAD_RESET_CYCLE;
         bytetx[1] = 8'hE1;
-		bytecount = 2;
+        bytecount = 2;
 
         spi_cmd();
         $display("Load Reset Cycle: 0x%02h ", bytetx[1]);
@@ -328,7 +330,7 @@
 
         bytetx[0] = `SPI_CMD_LOAD_RESET_CODE;
         bytetx[1] = 8'hA5;
-		bytecount = 2;
+        bytecount = 2;
 
         spi_cmd();
         $display("Load Reset Code: 0x%02h", bytetx[1]);

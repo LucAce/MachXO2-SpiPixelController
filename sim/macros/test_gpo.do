@@ -1,6 +1,6 @@
 #******************************************************************************
 #
-#  Copyright (c) 2019 LucAce
+#  Copyright (c) 2019-2020 LucAce
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a
 #  copy of this software and associated documentation files (the "Software"),
@@ -25,7 +25,7 @@
 # Set the BASE_PATH variable to the root of the project files
 set BASE_PATH "C:\Temp\MachXO2-SpiPixelController"
 
-cd $BASE_PATH/lib
+cd $BASE_PATH/sim/lib
 
 if {![file exists rtl_verilog]} {
     vlib rtl_verilog

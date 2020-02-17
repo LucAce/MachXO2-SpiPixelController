@@ -1,6 +1,6 @@
 //*****************************************************************************
 //
-// Copyright (c) 2019 LucAce
+// Copyright (c) 2019-2020 LucAce
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the "Software"),
@@ -187,7 +187,7 @@ module tb_top;
         bytetx[3] = 8'h23;
         bytetx[4] = 8'h34;
         bytetx[5] = 8'h45;
-		bytecount = 6;
+        bytecount = 6;
 
         spi_cmd();
 
@@ -208,7 +208,7 @@ module tb_top;
 
         bytetx[0] = `SPI_CMD_REG_READ;
         bytetx[1] = 8'hF2;
-		bytecount = 7;
+        bytecount = 7;
 
         spi_cmd();
 
