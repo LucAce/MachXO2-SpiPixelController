@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BaliProject version="3.2" title="top" device="LCMXO2-1200HC-4SG32C" default_implementation="impl1">
     <Options/>
-    <Implementation title="impl1" dir="impl1" description="impl1" synthesis="lse" default_strategy="Strategy1">
+    <Implementation title="impl1" dir="impl1-4SG32C" description="impl1" synthesis="lse" default_strategy="Strategy1">
         <Options def_top="top"/>
         <Source name="../../rtl/ctrl.v" type="Verilog" type_short="Verilog">
             <Options/>
