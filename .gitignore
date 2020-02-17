@@ -1,0 +1,5 @@
+prj/top/impl1/
+prj/top/top_tcr.dir/
+prj/top/*.ini
+prj/top/*.xml
+sim/lib/rtl_verilog/
