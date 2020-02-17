@@ -82,22 +82,22 @@ module tb_top;
         cmd_reg_verify(8'h06, 8'h67);
 
         // Reg 0x07: Zero High Timing
-        cmd_reg_verify(8'h07, 8'h10);
+        cmd_reg_verify(8'h07, 8'h12);
 
         // Reg 0x08: Zero Low Timing
-        cmd_reg_verify(8'h08, 8'h24);
+        cmd_reg_verify(8'h08, 8'h26);
 
         // Reg 0x09: One High Timing
-        cmd_reg_verify(8'h09, 8'h20);
+        cmd_reg_verify(8'h09, 8'h26);
 
         // Reg 0x0A: One Low Timing
-        cmd_reg_verify(8'h0A, 8'h1B);
+        cmd_reg_verify(8'h0A, 8'h12);
 
         // Reg 0x0B: Reset Cycle Timing
-        cmd_reg_verify(8'h0B, 8'h34);
+        cmd_reg_verify(8'h0B, 8'h38);
 
         // Reg 0x0C: Reset Code Timing
-        cmd_reg_verify(8'h0C, 8'h12);
+        cmd_reg_verify(8'h0C, 8'h09);
 
         // Reg 0x0D: Run
         cmd_reg_verify(8'h0D, 8'h01);
