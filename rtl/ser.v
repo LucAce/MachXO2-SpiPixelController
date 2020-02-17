@@ -1,6 +1,6 @@
 //*****************************************************************************
 //
-// Copyright (c) 2019 LucAce
+// Copyright (c) 2019-2020 LucAce
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the "Software"),
@@ -106,8 +106,7 @@ module ser (
     reg [4:0]       bindex;
 
     // Toggle Counts
-    reg [7:0]       timing_count;
-    reg [14:0]      reset_count;
+    reg [15:0]      timing_count;
 
     // Buffer Reset Count
     wire            eof_empty;
@@ -287,31 +286,30 @@ module ser (
     //*************************************************************************
     always @(posedge CLK or negedge RST_N) begin
         if (RST_N == 1'b0) begin
-            sosm_state              <= `S_SO_IDLE;
+            sosm_state      <= `S_SO_IDLE;
 
             // Reset Under Flow Flag
-            FIFO_UNDERFLOW          <= 1'b0;
+            FIFO_UNDERFLOW  <= 1'b0;
 
             // Reset Serial Output
-            SER_OUT                 <= 1'b0;
+            SER_OUT         <= 1'b0;
 
             // Reset Processing Values
-            bindex                  <= 5'h00;
-            timing_count            <= 8'h00;
-            reset_count             <= 15'h0000;
+            bindex          <= 5'h00;
+            timing_count    <= 16'h0000;
 
             // Reset SO FSM Buffer Values, Flags
-            fbuf_ready              <= 1'b0;
-            fbuf_run                <= 35'h0_0000_0000;
+            fbuf_ready      <= 1'b0;
+            fbuf_run        <= 35'h0_0000_0000;
 
             // Reset Count Decrement
-            eof_decr                <= 1'b0;
+            eof_decr        <= 1'b0;
         end
         else begin
-            FIFO_UNDERFLOW          <= 1'b0;
-            SER_OUT                 <= 1'b0;
-            fbuf_ready              <= 1'b0;
-            eof_decr                <= 1'b0;
+            FIFO_UNDERFLOW  <= 1'b0;
+            SER_OUT         <= 1'b0;
+            fbuf_ready      <= 1'b0;
+            eof_decr        <= 1'b0;
 
             case (sosm_state)
                 //*************************************************************
@@ -323,37 +321,37 @@ module ser (
                          (((eof_empty == 1'b0) && (MODE == 1'b0)) || (MODE == 1'b1)) ) begin
                         // Reset Code
                         if      (fbuf[32] == 1'b1) begin
-                            eof_decr    <= 1'b1;
-                            reset_count <= {RESET_CODE_TIMING[7:0], 7'h00} - 1;
-                            sosm_state  <= `S_SO_RESET;
+                            eof_decr     <= 1'b1;
+                            timing_count <= {RESET_CODE_TIMING[7:0], 8'h00} - 1;
+                            sosm_state   <= `S_SO_RESET;
                         end
                         // Reset Cycle
                         else if (fbuf[33] == 1'b1) begin
-                            eof_decr    <= 1'b1;
-                            reset_count <= {7'h00, RESET_CYCLE_TIMING[7:0]} - 1;
-                            sosm_state  <= `S_SO_RESET;
+                            eof_decr     <= 1'b1;
+                            timing_count <= {8'h00, RESET_CYCLE_TIMING[7:0]} - 1;
+                            sosm_state   <= `S_SO_RESET;
                         end
                         // 4 Color/bytes, MSB is 1, Start at bit 31
                         else if ((fbuf[34] == 1'b1) && (fbuf[31] == 1'b1)) begin
-                            timing_count <= ONE_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ONE_HIGH_TIMING} - 1;
                             bindex       <= 5'h1F;
                             sosm_state   <= `S_SO_HIGH_PHASE;
                         end
                         // 4 Color/bytes, MSB is 0, Start at bit 31
                         else if ((fbuf[34] == 1'b1) && (fbuf[31] == 1'b0)) begin
-                            timing_count <= ZERO_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ZERO_HIGH_TIMING} - 1;
                             bindex       <= 5'h1F;
                             sosm_state   <= `S_SO_HIGH_PHASE;
                         end
                         // 3 Color/bytes, MSB is 1, Start at bit 23
                         else if ((fbuf[34] == 1'b0) && (fbuf[23] == 1'b1)) begin
-                            timing_count <= ONE_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ONE_HIGH_TIMING} - 1;
                             bindex       <= 5'h17;
                             sosm_state   <= `S_SO_HIGH_PHASE;
                         end
                         // 3 Color/bytes, MSB is 0, Start at bit 23
                         else begin
-                            timing_count <= ZERO_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ZERO_HIGH_TIMING} - 1;
                             bindex       <= 5'h17;
                             sosm_state   <= `S_SO_HIGH_PHASE;
                         end
@@ -374,15 +372,15 @@ module ser (
                 `S_SO_HIGH_PHASE: begin
                     SER_OUT <= 1'b1;
 
-                    if (timing_count > 8'h00) begin
+                    if (timing_count > 16'h0000) begin
                         timing_count <= timing_count - 1;
                         sosm_state   <= `S_SO_HIGH_PHASE;
                     end
                     else begin
                         if (fbuf_run[bindex] == 1'b1)
-                            timing_count <= ONE_LOW_TIMING - 1;
+                            timing_count <= {8'h00, ONE_LOW_TIMING} - 1;
                         else
-                            timing_count <= ZERO_LOW_TIMING - 1;
+                            timing_count <= {8'h00, ZERO_LOW_TIMING} - 1;
 
                         sosm_state <= `S_SO_LOW_PHASE;
                     end
@@ -396,7 +394,7 @@ module ser (
                     SER_OUT <= 1'b0;
 
                     // Decrement count and stay in this state
-                    if (timing_count > 8'h00) begin
+                    if (timing_count > 16'h0000) begin
                         timing_count <= timing_count - 1;
                         sosm_state   <= `S_SO_LOW_PHASE;
                     end
@@ -407,37 +405,37 @@ module ser (
                               (fbuf_valid == 1'b1) ) begin
                         // Reset Code
                         if      (fbuf[32] == 1'b1) begin
-                            eof_decr    <= 1'b1;
-                            reset_count <= {RESET_CODE_TIMING[7:0], 7'h00} - 1;
-                            sosm_state  <= `S_SO_RESET;
+                            eof_decr     <= 1'b1;
+                            timing_count <= {RESET_CODE_TIMING[7:0], 8'h00} - 1;
+                            sosm_state   <= `S_SO_RESET;
                         end
                         // Reset Cycle
                         else if (fbuf[33] == 1'b1) begin
-                            eof_decr    <= 1'b1;
-                            reset_count <= {7'h00, RESET_CYCLE_TIMING[7:0]} - 1;
-                            sosm_state  <= `S_SO_RESET;
+                            eof_decr     <= 1'b1;
+                            timing_count <= {8'h00, RESET_CYCLE_TIMING[7:0]} - 1;
+                            sosm_state   <= `S_SO_RESET;
                         end
                         // 4 Color/bytes, MSB is 1, Start at bit 31
                         else if ((fbuf[34] == 1'b1) && (fbuf[31] == 1'b1)) begin
-                            timing_count <= ONE_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ONE_HIGH_TIMING} - 1;
                             bindex       <= 5'h1F;
                             sosm_state   <= `S_SO_HIGH_PHASE;
                         end
                         // 4 Color/bytes, MSB is 0, Start at bit 31
                         else if ((fbuf[34] == 1'b1) && (fbuf[31] == 1'b0)) begin
-                            timing_count <= ZERO_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ZERO_HIGH_TIMING} - 1;
                             bindex       <= 5'h1F;
                             sosm_state   <= `S_SO_HIGH_PHASE;
                         end
                         // 3 Color/bytes, MSB is 1, Start at bit 23
                         else if ((fbuf[34] == 1'b0) && (fbuf[23] == 1'b1)) begin
-                            timing_count <= ONE_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ONE_HIGH_TIMING} - 1;
                             bindex       <= 5'h17;
                             sosm_state   <= `S_SO_HIGH_PHASE;
                         end
                         // 3 Color/bytes, MSB is 0, Start at bit 23
                         else begin
-                            timing_count <= ZERO_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ZERO_HIGH_TIMING} - 1;
                             bindex       <= 5'h17;
                             sosm_state   <= `S_SO_HIGH_PHASE;
                         end
@@ -452,15 +450,15 @@ module ser (
                     else if ( (bindex     == 0) &&
                               (fbuf_valid == 1'b0) ) begin
                         FIFO_UNDERFLOW <= 1'b1;
-                        reset_count    <= {RESET_CODE_TIMING[7:0], 7'h00} - 1;
+                        timing_count   <= {RESET_CODE_TIMING[7:0], 8'h00} - 1;
                         sosm_state     <= `S_SO_RESET;
                     end
                     // If this is not the last bit go to the next pixel
                     else begin
                         if (fbuf_run[bindex-1] == 1'b1)
-                            timing_count <= ONE_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ONE_HIGH_TIMING} - 1;
                         else
-                            timing_count <= ZERO_HIGH_TIMING - 1;
+                            timing_count <= {8'h00, ZERO_HIGH_TIMING} - 1;
 
                         bindex     <= bindex - 1;
                         sosm_state <= `S_SO_HIGH_PHASE;
@@ -477,12 +475,13 @@ module ser (
                     // Stay in reset until a count of 1 then go to idle.
                     // The one extra cycle allows for the next buffer
                     // to be started in the idle state.
-                    if (reset_count > 15'h0001) begin
-                        reset_count <= reset_count - 1;
+                    if (timing_count > 16'h0001) begin
+                        timing_count <= timing_count - 1;
                         sosm_state  <= `S_SO_RESET;
                     end
                     else begin
-                        sosm_state  <= `S_SO_IDLE;
+                        timing_count <= timing_count - 1;
+                        sosm_state   <= `S_SO_IDLE;
                     end
                 end
 

@@ -1,6 +1,6 @@
 //*****************************************************************************
 //
-// Copyright (c) 2019 LucAce
+// Copyright (c) 2019-2020 LucAce
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the "Software"),
@@ -223,8 +223,8 @@ module regs (
             // Reg 0x0B (45)
             reset_cycle_timing_reg  <= 8'h34;
 
-            // Reg 0x0C (18)
-            reset_code_timing_reg   <= 8'h12;
+            // Reg 0x0C (49)
+            reset_code_timing_reg   <= 8'h31;
 
             // Reg 0x0D
             run_reg                 <= 1'b1;

@@ -1,6 +1,6 @@
 //*****************************************************************************
 //
-// Copyright (c) 2019 LucAce
+// Copyright (c) 2019-2020 LucAce
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the "Software"),
@@ -67,7 +67,7 @@ module top (
     // Parameter Definitions
     //*************************************************************************
     parameter       PROTOCOL = 8'h01;       // Protocol Version
-    parameter       REVISION = 8'h02;       // Device Revision
+    parameter       REVISION = 8'h03;       // Device Revision
 
 
     //*************************************************************************
