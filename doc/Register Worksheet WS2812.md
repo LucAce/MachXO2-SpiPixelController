@@ -1,4 +1,4 @@
-# WS2812 Nominal Timing Register Values
+# WS2812B Nominal Timing Register Values
 
 WS2812 Nominal High+Low Timing: 1.25us +/- 600ns
 
@@ -25,7 +25,7 @@ T1H+T1L | 1300         | 600
 
 Operation  | Minimum (ns) | Tolerance (ns)
 ---------- | ------------ | --------------
-Reset Code | 50000        | -
+Reset Code | 280000       | -
 
 
 ### Oscillator
@@ -57,9 +57,9 @@ T1H+T1L | 57.629  | 59             | 1330.93
 
 Operation  | Divisor  | Register Value | FPGA Timing (ns)
 ---------- | -------- | -------------- | ----------------
-Reset Code | 17.316   | 18             | 51973.83
+Reset Code | 48.48593 | 49             | 282968.64
 
 ```
 Notes:
-1)  The Reset Code register value is multiplied by 128 in system.
+1)  The Reset Code register value is multiplied by 256 in system.
 ```

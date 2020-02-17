@@ -17,7 +17,7 @@ Load Reset Code  | 0x07         | -            | -          | 1+
 
 ```
 Notes:
-1) Command fields with "-" indicate they are not present.
+1) Command fields with "-" indicate they are not present for the command.
 2) During Load RGB, Load WRGB, Load Reset Cycle and Load Reset Code commands the
    Status Register value is returned on the MISO. The Status Register has fields
    for the state of the FIFO and can be used for flow control by the Master.

@@ -121,7 +121,7 @@ Notes:
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
 7:3        | RO         | 5'h00      | Reserved
-2:0        | RW         | 3'h3       | FIFO Almost Empty Register Value bits 10-8
+2:0        | RW         | 3'h0       | FIFO Almost Empty Register Value bits 10-8
 
 ```
 Notes:
@@ -134,7 +134,7 @@ Notes:
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h99      | FIFO Almost Empty Register Value bits 7-0
+7:0        | RW         | 8'h67      | FIFO Almost Empty Register Value bits 7-0
 
 ```
 Notes:
@@ -147,14 +147,14 @@ Notes:
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h10      | Number of clock cycles a WS2812 “Zero” value will be driven high (1)
+7:0        | RW         | 8'h10      | Number of clock cycles a WS2812B “Zero” value will be driven high (1)
 
 
 ## Offset: 0x08 - Zero Low Timing Register
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h24      | Number of clock cycles a WS2812 “Zero” value will be driven low (0)
+7:0        | RW         | 8'h24      | Number of clock cycles a WS2812B “Zero” value will be driven low (0)
 
 
 
@@ -162,14 +162,14 @@ Bits       | Type       | Reset      | Description
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h24      | Number of clock cycles a WS2812 “One” value will be driven high (1)
+7:0        | RW         | 8'h20      | Number of clock cycles a WS2812B “One” value will be driven high (1)
 
 
 ## Offset: 0x0A - One Low Timing Register
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h20      | Number of clock cycles a WS2812 “One” value will be driven low (0)
+7:0        | RW         | 8'h1B      | Number of clock cycles a WS2812B “One” value will be driven low (0)
 
 
 ## Offset: 0x0B - Reset Cycle Timing Register
@@ -189,7 +189,7 @@ Notes:
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h18      | Number ofclock cycles time 128 a Reset Code will be driven.  Reset Code is driven between LED updates to signal the end of the shifting.
+7:0        | RW         | 8'h31      | Number of clock cycles times 256 a Reset Code will be driven.  Reset Code is driven between LED updates to signal the end of the shifting.
 
 
 ## Offset: 0x0D - Run Register
