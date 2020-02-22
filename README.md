@@ -166,8 +166,8 @@ Notes:
 ## Test Bench:
 ```
 ./rpi/
-  -> rpi_fpga_test.py     : Raspberry Pi Python FPGA Checkout Test
-  -> rpi_strand_test.py   : Raspberry Pi Python FPGA Strand Test
+  -> rpi_strand_walking_pixel_test.py : Raspberry Pi Python FPGA Checkout Test
+  -> rpi_strand_gpo_test.py           : Raspberry Pi Python FPGA Strand Test
 
 ./sim/
   -> macros/
