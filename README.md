@@ -147,7 +147,8 @@ Notes:
   -> fifo_dc_efb/         : IPexpress files for the FIFO EFB
   -> slave_efb/           : IPexpress files for the User SPI Slave
   -> /top/                : Lattice Diamond top level project
-    -> top.ldf            : Top level Lattice Diamond project file
+    -> top_4SG32C.ldf     : Top level Lattice Diamond project file in the 4SG32C package
+    -> top_6SG32I.ldf     : Top level Lattice Diamond project file in the 6SG32I package
     -> top1.sty           : Top level Lattice Diamond strategy file
 ./syn/machxo2_qfn32.lpf   : Design IO constraints
 ```
