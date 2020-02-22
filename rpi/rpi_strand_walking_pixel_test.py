@@ -23,18 +23,20 @@
 #
 #******************************************************************************
 #
-# File:  rpi_fpga_test.py
+# File:  rpi_strand_walking_pixel_test.py
 # Date:  Sun Aug 18 12:00:00 EDT 2019
 #
 # Functional Description:
 #
-#   Raspberry Pi Based FPGA Test
+#   Raspberry Pi Strand Walking Pixel Test
+#
+# Notes:
+#
+#   - Raspbery Pi SPI Master Code
+#   - RPi Board Pin 36 is used as an Active Low FPGA Logic Reset
+#   - RPi CE0 is used for the FPGA User SPI Slave Chip Select
 #
 #******************************************************************************
-
-# Raspbery Pi SPI Master Code
-# Board Pin 36 is used as an Active Low FPGA Logic Reset
-# RPi CE0 is used for the FPGA User SPI Slave Chip Select
 
 import sys
 import time
@@ -116,7 +118,7 @@ def rgb_reset_code():
 RESET_PIN = 36
 BUS_ID = 0
 DEVICE_ID = 0
-LED_COUNT = 5
+LED_COUNT = 60
 
 # Reset is on board pin 36
 GPIO.setmode(GPIO.BOARD)
@@ -127,7 +129,7 @@ spi = spidev.SpiDev()
 spi.open(BUS_ID, DEVICE_ID)
 
 # Set SPI speed and mode
-spi.max_speed_hz = 3900000
+spi.max_speed_hz = 1953000
 spi.mode = 0
 
 print ("\nReset FPGA Fabric Logic")
@@ -143,7 +145,10 @@ hwid_read()
 print ("Issue Hardware Revision Command, 3 Bytes")
 revision_read()
 
-print ("Issue Register Reads Command, 16 Bytes")
+print ("Issue Register Write Command (Reset Code Timing), 3 Bytes")
+reg_write(0x0C, [0xA0])
+
+print ("Issue Register Reads Command (All Registers)")
 reg_read(0x00, 0x0D)
 
 print ("Issue Register Write Command (Scratch Pad), 6 Bytes")
