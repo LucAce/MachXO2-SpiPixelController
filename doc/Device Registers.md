@@ -147,14 +147,14 @@ Notes:
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h10      | Number of clock cycles a WS2812B “Zero” value will be driven high (1)
+7:0        | RW         | 8'h12      | Number of clock cycles a WS2812B “Zero” value will be driven high (1)
 
 
 ## Offset: 0x08 - Zero Low Timing Register
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h24      | Number of clock cycles a WS2812B “Zero” value will be driven low (0)
+7:0        | RW         | 8'h26      | Number of clock cycles a WS2812B “Zero” value will be driven low (0)
 
 
 
@@ -162,21 +162,21 @@ Bits       | Type       | Reset      | Description
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h20      | Number of clock cycles a WS2812B “One” value will be driven high (1)
+7:0        | RW         | 8'h26      | Number of clock cycles a WS2812B “One” value will be driven high (1)
 
 
 ## Offset: 0x0A - One Low Timing Register
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h1B      | Number of clock cycles a WS2812B “One” value will be driven low (0)
+7:0        | RW         | 8'h12      | Number of clock cycles a WS2812B “One” value will be driven low (0)
 
 
 ## Offset: 0x0B - Reset Cycle Timing Register
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h34      | Number of clock cycles a zero will be driven.
+7:0        | RW         | 8'h38      | Number of clock cycles a zero will be driven.
 
 ```
 Notes:
@@ -189,7 +189,7 @@ Notes:
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:0        | RW         | 8'h31      | Number of clock cycles times 256 a Reset Code will be driven.  Reset Code is driven between LED updates to signal the end of the shifting.
+7:0        | RW         | 8'h09      | Number of clock cycles times 256 a Reset Code will be driven.  Reset Code is driven between LED updates to signal the end of the shifting.
 
 
 ## Offset: 0x0D - Run Register
@@ -204,7 +204,7 @@ Bits       | Type       | Reset      | Description
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:2        | RO         | 7'h00      | Reserved
+7:2        | RO         | 6'h00      | Reserved
 1          | RW         | 1'b0       | General Purpose Bit 1 output value.
 0          | RW         | 1'b0       | General Purpose Bit 0 output value.
 
@@ -213,7 +213,7 @@ Bits       | Type       | Reset      | Description
 
 Bits       | Type       | Reset      | Description
 ---------- | ---------- | ---------- | -----------
-7:2        | RO         | 7'h00      | Reserved
+7:2        | RO         | 6'h00      | Reserved
 1          | RW         | 1'b0       | General Purpose Bit 1 output enable; 1'b0: General Purpose Bit 1 is tri-stated; 1'b1: General Purpose Bit 1 is driven with the GPO 1 value.
 0          | RW         | 1'b0       | General Purpose Bit 0 output enable; 1'b0: General Purpose Bit 1 is tri-stated; 1'b1: General Purpose Bit 1 is driven with the GPO 0 value.
 
