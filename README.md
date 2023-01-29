@@ -106,6 +106,38 @@ Notes:
    where indicated.
 ```
 
+### Hardware ID Command
+
+![Hardware ID Command](doc/wave/hardware_id.png)
+
+### Revision Number Command
+
+![Revision Number Command](doc/wave/revision_number.png)
+
+### Register Read Command
+
+![Register Read Command](doc/wave/register_read.png)
+
+### Register Write Command
+
+![Register Write Command](doc/wave/register_write.png)
+
+### Load RGB Command
+
+![Load RGB Command](doc/wave/load_rgb.png)
+
+### Load WRGB Command
+
+![Load WRGB Command](doc/wave/load_wrgb.png)
+
+### Load Reset Cycle Command
+
+![Load Reset Cycle Command](doc/wave/load_reset_cycle.png)
+
+### Load Reset Code Command
+
+![Load Reset Code Command](doc/wave/load_reset_code.png)
+
 # Device Registers
 Register            | Offset | Bit 7 | Bit 6 | Bit 5 | Bit 4 | Bit 3 | Bit 2  | Bit 1   | Bit 0
 ------------------- | ------ | ----- | ------ | ----- | ----- | ----- | -----  | -----   | -----
