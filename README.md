@@ -32,7 +32,7 @@ IO Voltage: **3.3V**
 # SpiPixelController SPI Slave Performance
 
 The SpiPixelController utilizes the MachXO2's hardened User SPI Slave EFB and can operate
-with a SPI Clock of **20Mhz or less**.  However, achieving that speed is higly dependent on
+with a SPI Clock of **20Mhz or less**.  However, achieving that speed is highly dependent on
 the PCB and/or wiring of the system and may not be achievable.
 
 # SpiPixelController Device Pinout
@@ -79,7 +79,7 @@ Notes:
 ```
 
 # SPI Commands
-SPI is a serialzied byte interface and by itself does not define a communication
+SPI is a serialized byte interface and by itself does not define a communication
 protocol.  The following SPI communication protocol is used to operate the
 SpiPixelController.
 
