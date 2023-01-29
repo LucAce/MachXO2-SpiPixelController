@@ -1,0 +1,11 @@
+{signal: [
+    {name: 'SCLK', wave: 'p.................................'},
+    {name: 'SCSN', wave: '10...............................1'},
+    {name: 'MOSI', wave: 'x3.......5.......5.......5.......x', data: ['0x04', 'R', 'G', 'B']},
+    {name: 'MISO', wave: 'x........x.......7.......7.......x', data: ['Status Register', 'Status Register']},
+],
+config: {hscale: 1},
+foot: {text:
+  ['tspan', {'font-size':'18'}, 'Load RGB']
+  }
+}

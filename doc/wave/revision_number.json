@@ -1,0 +1,12 @@
+{signal: [
+    {name: 'SCLK', wave: 'p.........................'},
+    {name: 'SCSN', wave: '10.......................1'},
+    {name: 'MOSI', wave: 'x3.......2.......2.......x', data: ['0xF1', '0x00', '0x00']},
+    {name: 'MISO', wave: 'x........x.......7.......x', data: ['Revision Number']},
+],
+config: {hscale: 1},
+foot: {text:
+  ['tspan', {'font-size':'18'}, 'Revision Number Command'],
+  tock:-1
+  }
+}

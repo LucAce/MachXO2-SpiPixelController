@@ -1,0 +1,12 @@
+{signal: [
+    {name: 'SCLK', wave: 'p.........................'},
+    {name: 'SCSN', wave: '10.......................1'},
+    {name: 'MOSI', wave: 'x3.......2.......2.......x', data: ['0xF0', '0x00', '0x00']},
+    {name: 'MISO', wave: 'x........x.......7.......x', data: ['Hardware ID']},
+],
+config: {hscale: 1},
+foot: {text:
+  ['tspan', {'font-size':'18'}, 'Hardware ID Command'],
+  tock:-1
+  }
+}
