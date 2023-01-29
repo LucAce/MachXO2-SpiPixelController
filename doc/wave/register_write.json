@@ -1,7 +1,7 @@
 {signal: [
     {name: 'SCLK', wave: 'p........................'},
     {name: 'SCSN', wave: '10.......................1'},
-    {name: 'MOSI', wave: 'x3.......4.......5.......x', data: ['0x00', 'Address', 'Register Write Data']},
+    {name: 'MOSI', wave: 'x3.......4.......5.......x', data: ['0x01', 'Address', 'Register Write Data']},
     {name: 'MISO', wave: 'x........x.......x.......x'},
 ],
 config: {hscale: 1},
